@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fafnir Hud V1</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="chat.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" />
+    <script src="jquery.js"></script>
+    <script src="emoji.js"></script>
+</head>
+
+<body>
+    <div class="notification template success" aria-live="polite" role="alert">
+        <img src="./images/success-icon.svg" alt="Success Icon" class="icon">
+        <div class="content">
+            <p class="type">SUCESSO</p>
+            <span class="ml-4"></span>
+        </div>
+        <div class="progress-bar"></div>
+    </div>
+
+    <div id="app">
+		<div id="messages"></div>
+		<div class="chat-input">
+			<input type="text" id="input" maxlength="255" spellcheck="false" placeholder="DIGITE SUA MENSAGEM AQUI...">
+			<div class="chat-buttons">
+				<button class="chat-button" id="muteButton">
+					<i class="fa-solid fa-bell"></i>
+				</button>
+				<button class="chat-button" id="emojiButton">
+					<i class="fa-solid fa-face-laugh-beam"></i>
+				</button>
+			</div>
+		</div>
+		<div class="emoji-panel" id="emojiPanel"></div>
+	</div>
+
+    <div class="DisplayHud">
+        <img class='logo' src="images/logo.png">
+
+        <div id="Infos">
+            <div class="box">
+                <span class="Clock">12:30</span>
+                <i class="fa-solid fa-clock"></i>
+            </div>
+            <div class="box">
+                <span class="Gemstone">0</span>
+                <i class="fa-solid fa-gem"></i>
+            </div>
+            <div class="box">
+                <span class="Passport">0</span>
+                <i class="fa-solid fa-user"></i>
+            </div>
+        </div>
+
+        <div id="Infos2">
+            <div class="box">
+                <p class="Radio">OFFLINE</p>
+                <i class="fa-solid fa-walkie-talkie"></i>
+            </div>
+            <div class="box">
+                <i class="fa-solid fa-microphone" id="microfone"></i>
+                <div class="voice-indicators">
+                    <div class='Voice one active'></div>
+                    <div class='Voice two active'></div>
+                    <div class='Voice three'></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="Weapon">
+            <div class="box">
+                <div class="box-content">
+                    <p id="weapon-model">AK-47</p>
+                </div>
+                <div class="weapon-content">
+                    <h2 id="ammo">60</h2>
+                    <span>/</span>
+                    <p id="full-ammo">300</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="PlayerHud">
+
+            <div class="hud-boxes">
+                <div class="status-rect-background"><i class="fa-solid fa-heart-pulse"></i></div>
+                <div class="status-rect health"></div>
+            </div>
+
+            <div class="hud-boxes" id="Armour-box" display="none">
+                <div class="status-rect-background"><i class="fa-solid fa-shield"></i></div>
+                <div class="status-rect armour"></div>
+            </div>
+
+            <div class="hud-boxes" id="Hunger-box">
+                <div class="status-rect-background"><i class="fa-solid fa-burger"></i></div>
+                <div class="status-rect hunger"></div>
+            </div>
+
+            <div class="hud-boxes" id="Thirst-box">
+                <div class="status-rect-background"><i class="fa-solid fa-droplet"></i></div>
+                <div class="status-rect thirst"></div>
+            </div>
+
+            <div class="hud-boxes" id="Stress-box" display="none">
+                <div class="status-rect-background"><i class="fa-solid fa-brain"></i></div>
+                <div class="status-rect stress"></div>
+            </div>
+
+            <div class="hud-boxes" id="Oxigen-box" display="none">
+                <div class="status-rect-background"><i class="fa-solid fa-lungs"></i></div>
+                <div class="status-rect oxigen"></div>
+            </div>
+            
+        </div>
+
+        <div id="car-container">
+            <div class="SpeedoBox">
+                <div class="vehicle-speed-container">
+                    <div class="gear-indicator">
+                        <div class="gear">N</div>
+                    </div>
+                    <div class="speed-display">
+                        <b id="speed">240</b>
+                    </div>
+                </div>
+                <div class="speed-bar-container">
+                    <div class="speed-segment"></div>
+                    <div class="speed-segment"></div>
+                    <div class="speed-segment"></div>
+                    <div class="speed-segment"></div>
+                    <div class="speed-segment"></div>
+                    <div class="speed-segment"></div>
+                    <div class="speed-segment"></div>
+                    <div class="speed-segment"></div>
+                    <div class="speed-segment"></div>
+                    <div class="speed-segment"></div>
+                    <div class="speed-segment"></div>
+                    <div class="speed-segment"></div>
+                    <div class="speed-segment"></div>
+                    <div class="speed-segment"></div>
+                    <div class="speed-segment"></div>
+                </div>
+                <div class="speed-extras">
+                    <i class="fa-solid fa-gas-pump"></i>    
+                    <div class="fuel-box">
+                        <div class="fuel-background"></div>
+                        <div class="fuel-fill"></div>
+                    </div>              
+                    <div class="speed-box seatbelt">
+                        <img src="./images/seatbelt.svg" alt="Seatbelt" class="seatbelt-icon">
+                        <div class="circle seatbelt red"></div>
+                    </div>  
+                    <div class="speed-box headlight">
+                        <img src="./images/headlight.svg" alt="Headlight" class="headlight-icon">
+                        <div class="circle headlight"></div>
+                    </div>
+                    <div class="speed-box engine">
+                        <img src="./images/engine.svg" alt="Engine" class="engine-icon">
+                        <div class="circle engine"></div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
